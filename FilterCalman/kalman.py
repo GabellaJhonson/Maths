@@ -68,23 +68,7 @@ for k in arr:
 plt.plot(adc, label='Kalman')  # Kalman отфильтрованное изображение
 plt.legend()  # Показать легенду
 plt.show()
-# 0 - timesec
-# 1 - SOG
-# 2 - COG
-# 3 - roll
-# 4 - pitch
-# 5 - yaw
-# 6 - MC
-# 7 - ax
-# 8 - ay
-# 9 - RPM
-# 10 - rudder
-# 11 - RPM_2
-# 12 - rudder_2
-# 13 - ROT
-# 14 - lat
-# 15 - lon
-# 16 - magX
+
 # 17 - magY
 # 18 - next_wp
 # 19 - crs_err
