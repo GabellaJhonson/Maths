@@ -68,10 +68,3 @@ for k in arr:
 plt.plot(adc, label='Kalman')  # Kalman отфильтрованное изображение
 plt.legend()  # Показать легенду
 plt.show()
-
-# 17 - magY
-# 18 - next_wp
-# 19 - crs_err
-# 20 - app_xte
-# 21 - rudder_value_2-55
-# 22 - rudder_value_1-55
