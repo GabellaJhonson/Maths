@@ -1,14 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-Q = 0.00001  # Ковариацию шума также можно понимать как отклонение шума между двумя моментами
-R = 0.1  # Ковариацию состояния можно понимать как отклонение состояния между двумя моментами
-P_k_k1 = 1  # Ковариация состояния в предыдущий момент
+Q = 0.00001  
+R = 0.1
+P_k_k1 = 1  
 Kg = 0  # Калман Усиление
 P_k1_k1 = 1
 x_k_k1 = 0  # Значение состояния в предыдущий момент
-ADC_OLD_Value = 0  # Последнее значение АЦП
-kalman_adc_old = 0  # Наилучшая оценка последнего фильтра Калмана
+ADC_OLD_Value = 0  
+kalman_adc_old = 0  
 
 
 def kalman(ADC_Value):
@@ -17,7 +17,7 @@ def kalman(ADC_Value):
     Z_k = ADC_Value  # Измерения
 
     if (
-            abs(kalman_adc_old - ADC_Value) >= 80):  # Разница между последним значением состояния и измеренным значением в данный момент слишком велика, выполните простую фильтрацию первого порядка, золотое сечение 0618 может быть установлено по желанию
+            abs(kalman_adc_old - ADC_Value) >= 80):  
         x_k1_k1 = ADC_Value * 0.382 + kalman_adc_old * 0.618
     else:  # Разрыв не большой прямого использования
         x_k1_k1 = kalman_adc_old;
@@ -35,7 +35,7 @@ def kalman(ADC_Value):
     return kalman_adc
 
 
-plt.figure(figsize=(20, 8))  # Создать размер холста (20,8)
+plt.figure(figsize=(20, 8)) 
 
 file1 = open("/Users/iisuos/PyTest/input.txt", "r")
 # считываем все строки
@@ -65,6 +65,6 @@ adc = []
 for k in arr:
     adc.append(kalman(k))
 
-plt.plot(adc, label='Kalman')  # Kalman отфильтрованное изображение
-plt.legend()  # Показать легенду
+plt.plot(adc, label='Kalman')  
+plt.legend() 
 plt.show()
